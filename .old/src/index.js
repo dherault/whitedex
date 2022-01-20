@@ -42,7 +42,7 @@ async function initializeTrade(chainId) {
     const trader = new Trader(dexters, portfolio, tokenAddress0, tokenAddress1, symbols[0], symbols[1])
 
     // Trade on price updates
-    dexIds.forEach(dexId => dexters.getDex(dexId).addOracleListener(tokenAddress0, tokenAddress1, data => trader.evalutate(dexId, data)))
+    dexIds.forEach(dexId => dexters.getDex(dexId).addSyncListener(tokenAddress0, tokenAddress1, data => trader.evalutate(dexId, data)))
   })
 }
 

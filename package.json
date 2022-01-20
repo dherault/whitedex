@@ -1,17 +1,14 @@
 {
-  "name": "crypto-trading-bot",
+  "name": "whitejack",
   "version": "0.0.0",
   "description": "A cryptocurrencies trading robot",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "start:watch": "nodemon --watch ./src --exec \"npm start\"",
-    "dev": "npm run start:watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dherault/crypto-trading-bot.git"
+    "url": "git+https://github.com/dherault/whitejack.git"
   },
   "keywords": [
     "crypto",
@@ -22,19 +19,7 @@
   "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
-    "url": "https://github.com/dherault/crypto-trading-bot/issues"
+    "url": "https://github.com/dherault/whitejack/issues"
   },
-  "homepage": "https://github.com/dherault/crypto-trading-bot#readme",
-  "devDependencies": {
-    "eslint": "^8.7.0",
-    "eslint-config-dherault": "^1.7.2",
-    "nodemon": "^2.0.15"
-  },
-  "dependencies": {
-    "bignumber.js": "^9.0.2",
-    "chalk": "^5.0.0",
-    "dexters": "^0.5.4",
-    "dotenv": "^14.2.0",
-    "ethers": "^5.5.3"
-  }
+  "homepage": "https://github.com/dherault/whitejack#readme"
 }

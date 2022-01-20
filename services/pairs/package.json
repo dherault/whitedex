@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "pairs",
+  "version": "0.0.0",
+  "description": "Whitejack's pairs service",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:watch": "nodemon --exec \"npm run start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dexters": "^0.5.4",
+    "firebase-admin": "^10.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
