@@ -1,2 +1,2 @@
-# crypto-trading-bot
+# Whitejack
 A cryptocurrencies trading robot
