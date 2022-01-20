@@ -1,4 +1,4 @@
-const configuration = require('./configuration')
+const configuration = require('../configuration')
 
 class Trader {
 

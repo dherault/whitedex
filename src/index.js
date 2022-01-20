@@ -98,7 +98,7 @@ async function aggregateAndNamePairs(dexters, dexIdToPairs) {
 
       pairHashToMetadata[hash].dexIds.push(dexId)
       pairHashToMetadata[hash].symbols = await Promise.all(
-        [tokenAddress0, tokenAddress1].sort((a, b) => a < b ? -1 : 1).map(token => dexters.getDex(dexId).getTokenSymbol(token))
+        [tokenAddress0, tokenAddress1].sort((a, b) => a < b ? -1 : 1).map(token => dexters.getDex(dexId).getERC20TokenSymbol(token))
       )
 
       console.log(`[Abex|${dexters.chainId}|${dexId}] Resolving symbol for ${tokenAddress0} and ${tokenAddress1}`)

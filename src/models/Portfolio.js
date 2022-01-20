@@ -1,13 +1,17 @@
 const { ethers } = require('ethers')
 const BigNumber = require('bignumber.js')
 
-const configuration = require('./configuration')
+const configuration = require('../configuration')
 
-const { unhashPair } = require('./utils/hashPair')
+const { unhashPair } = require('../utils/hashPair')
 
 class Portfolio {
 
   constructor(dexters, pairHashToMetadata) {
+    if (!process.env.PRIVATE_KEY) {
+      throw new Error('No PRIVATE_KEY environment variable found')
+    }
+
     this.dexters = dexters
     this.pairHashToMetadata = pairHashToMetadata
     this.tokenAddressToMetadata = this._extractTokens(pairHashToMetadata)
