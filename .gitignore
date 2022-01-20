@@ -1,4 +1,5 @@
 service-key.json
+.DS_Store
 
 # Logs
 logs
