@@ -1,0 +1,19 @@
+{
+  "name": "whitedex-common",
+  "version": "0.0.0",
+  "description": "Whitedex common libs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dherault/whitejack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dherault/whitejack/issues"
+  },
+  "homepage": "https://github.com/dherault/whitejack#readme",
+  "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
+  "license": "SEE LICENSE IN LICENSE.md"
+}

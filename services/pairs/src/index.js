@@ -10,10 +10,11 @@ const formatAddress = require('./utils/formatAddress')
 const { hashPair } = require('./utils/hashPair')
 
 const blockchainId = 1666600000
+// const blockchainId = 137
 
 async function main() {
   const log = (...args) => console.log(chalk.green(`[Pairs|${blockchainId}]`), ...args)
-  const logDex = dexId => (...args) => console.log(chalk.green(`[Pairs|${blockchainId}|${dexId}]`), ...args)
+  const logDex = (dexId, ...args) => console.log(chalk.green(`[Pairs|${blockchainId}|${dexId}]`), ...args)
 
   log('Initializing pairs service')
 
@@ -30,11 +31,11 @@ async function main() {
   for (const dexId of dexters.getDexIds()) {
     const dex = dexters.getDex(dexId)
 
-    logDex(dexId)('Initializing pairs')
+    logDex(dexId, 'Initializing pairs')
 
     dexIdToPairs[dexId] = await dex.getPairs()
 
-    logDex(dexId)('Saving pairs to db')
+    logDex(dexId, 'Saving pairs to db')
 
     for (const [pairAddress, tokenAddresses] of Object.entries(dexIdToPairs[dexId])) {
       const id = formatAddress(pairAddress)
@@ -90,32 +91,30 @@ async function main() {
       const hash = hashPair(tokenId0, tokenAddress1)
       const tokenAddresses = [tokenId0, tokenId1].sort((a, b) => a < b ? -1 : 1)
 
-      logDex(dexId)(`Resolving metadata for ${tokenAddresses[0]} and ${tokenAddresses[1]}`)
+      logDex(dexId, `Resolving metadata for ${tokenAddresses[0]} and ${tokenAddresses[1]}`)
 
       if (!pairHashToMetadata[hash]) {
         pairHashToMetadata[hash] = {
           blockchainId,
           id: hash,
           tokenAddresses,
-          pairAddresses: [],
-          dexIds: [],
+          dexIdToPairAddress: {},
           names: [],
           symbols: [],
           decimals: [],
         }
       }
 
-      pairHashToMetadata[hash].dexIds.push(dexId)
-      pairHashToMetadata[hash].pairAddresses.push(pairId)
+      pairHashToMetadata[hash].dexIdToPairAddress[dexId] = pairId
 
       if (!pairHashToMetadata[hash].names.length) {
-        pairHashToMetadata[hash].names = await Promise.all(tokenAddresses.map(dexters.getERC20TokenName))
+        pairHashToMetadata[hash].names = await Promise.all(tokenAddresses.map(tokenAddress => dexters.getERC20TokenName(tokenAddress)))
       }
       if (!pairHashToMetadata[hash].symbols.length) {
-        pairHashToMetadata[hash].symbols = await Promise.all(tokenAddresses.map(dexters.getERC20TokenSymbol))
+        pairHashToMetadata[hash].symbols = await Promise.all(tokenAddresses.map(tokenAddress => dexters.getERC20TokenSymbol(tokenAddress)))
       }
       if (!pairHashToMetadata[hash].decimals.length) {
-        pairHashToMetadata[hash].decimals = await Promise.all(tokenAddresses.map(dexters.getERC20TokenDecimals))
+        pairHashToMetadata[hash].decimals = await Promise.all(tokenAddresses.map(tokenAddress => dexters.getERC20TokenDecimals(tokenAddress)))
       }
     }
   }
@@ -126,7 +125,7 @@ async function main() {
     await db.collection('cross-pairs').doc(hash).set(metadata)
   }
 
-  log('Listening for new pairs')
+  log('Done')
 }
 
 main()
