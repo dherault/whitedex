@@ -1,5 +1,5 @@
 {
-  "name": "whitejack",
+  "name": "whitedex",
   "version": "0.0.0",
   "description": "A cryptocurrencies trading robot",
   "main": "src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "whitejack",
+  "name": "whitedex",
   "version": "0.0.0",
   "description": "A cryptocurrencies trading robot",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dherault/whitejack.git"
+    "url": "git+https://github.com/dherault/whitedex.git"
   },
   "keywords": [
     "crypto",
@@ -19,7 +19,7 @@
   "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
-    "url": "https://github.com/dherault/whitejack/issues"
+    "url": "https://github.com/dherault/whitedex/issues"
   },
-  "homepage": "https://github.com/dherault/whitejack#readme"
+  "homepage": "https://github.com/dherault/whitedex#readme"
 }

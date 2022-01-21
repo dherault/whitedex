@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dherault/whitejack.git"
+    "url": "git+https://github.com/dherault/whitedex.git"
   },
   "bugs": {
-    "url": "https://github.com/dherault/whitejack/issues"
+    "url": "https://github.com/dherault/whitedex/issues"
   },
-  "homepage": "https://github.com/dherault/whitejack#readme",
+  "homepage": "https://github.com/dherault/whitedex#readme",
   "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
   "license": "SEE LICENSE IN LICENSE.md"
 }

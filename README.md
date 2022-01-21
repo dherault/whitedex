@@ -1,2 +1,2 @@
-# Whitejack
+# Whitedex
 A cryptocurrencies trading robot
