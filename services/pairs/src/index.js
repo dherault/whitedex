@@ -5,6 +5,8 @@ const Dexters = require('dexters')
 
 const serviceAccount = require('../service-key.json')
 
+const blockchainId = 1666600000
+
 async function main() {
   initializeApp({
     credential: cert(serviceAccount),
@@ -12,7 +14,7 @@ async function main() {
 
   const db = getFirestore()
 
-  const dexters = new Dexters(1666600000)
+  const dexters = new Dexters(blockchainId)
 
   const dexIds = dexters.getDexIds()
 
@@ -20,16 +22,21 @@ async function main() {
 
   for (const dexId of dexIds) {
     dexIdToPairs[dexId] = await dexters.getDex(dexId).getPairs()
+
+    for (const [pairAddress, tokenAddresses] of Object.entries(dexIdToPairs[dexId])) {
+      const docRef = db.collection('pairs').doc(pairAddress)
+      const now = new Date().toISOString()
+
+      await docRef.set({
+        blockchainId,
+        dexId,
+        tokenAddresses,
+        createdAt: now,
+        updatedAt: now,
+      })
+    }
   }
 
-  // const docRef = db.collection('pairs').doc('0x0')
-
-  // const now = new Date().toISOString()
-
-  // await docRef.set({
-  //   createdAt: now,
-  //   updatedAt: now,
-  // })
 }
 
 main()
